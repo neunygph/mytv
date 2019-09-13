@@ -9,7 +9,8 @@ import {
 	fetchShippingMethods,
 	fetchPaymentMethods,
 	updateCart,
-	checkout
+	checkout,
+	playVideo
 } from './actions';
 
 const setQuery = (history, query) => {
@@ -28,6 +29,9 @@ export const mapStateToProps = (state, ownProps) => {
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
+		playVideo: item => {
+			dispatch(playVideo(item));
+		},
 		addCartItem: item => {
 			dispatch(addCartItem(item));
 		},

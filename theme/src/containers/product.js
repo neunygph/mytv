@@ -7,7 +7,8 @@ const ProductContainer = props => {
 	const {
 		addCartItem,
 		getJSONLD,
-		state: { productDetails, settings, categories }
+		state: { productDetails, settings, categories },
+		playVideo
 	} = props;
 
 	if (productDetails) {
@@ -37,6 +38,7 @@ const ProductContainer = props => {
 					product={productDetails}
 					addCartItem={addCartItem}
 					categories={categories}
+					playVideo={playVideo}
 				/>
 			</Fragment>
 		);
@@ -46,12 +48,13 @@ const ProductContainer = props => {
 
 ProductContainer.propTypes = {
 	getJSONLD: PropTypes.func.isRequired,
-	addCartItem: PropTypes.func.isRequired,
+	//addCartItem: PropTypes.func.isRequired,
 	state: PropTypes.shape({
 		settings: PropTypes.shape({}),
 		productDetails: PropTypes.shape({}),
 		categories: PropTypes.arrayOf(PropTypes.shape({}))
-	}).isRequired
+	}).isRequired,
+	playVideo: PropTypes.func.isRequired
 };
 
 export default ProductContainer;

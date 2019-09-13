@@ -80,7 +80,7 @@
   max-width: none;
 }
 
-.product-quantity {
+.product-quantity , .epi-dropdown {
   display: flex;
   height: 2.25em;
   width: 152px;
@@ -149,3 +149,26 @@ Mobile
     background-color: rgba(0,0,0,0.05);
   }
 }
+#jplayer{
+  display: contents !important;
+}
+/* Player Modal*/
+.Playermodal {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  right: 60px;
+  bottom: 60px;
+  background-color: transparent;
+}
+
+.Playeroverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 9999 !important;
+}
+

@@ -1,9 +1,11 @@
 // config used by server side only
-const dbHost = process.env.DB_HOST || '127.0.0.1';
+const dbHost =
+	process.env.DB_HOST ||
+	'cluster0-shard-00-00-czxmu.mongodb.net:27017,cluster0-shard-00-01-czxmu.mongodb.net:27017,cluster0-shard-00-02-czxmu.mongodb.net:27017/mytv?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
 const dbPort = process.env.DB_PORT || 27017;
-const dbName = process.env.DB_NAME || 'shop';
-const dbUser = process.env.DB_USER || '';
-const dbPass = process.env.DB_PASS || '';
+const dbName = process.env.DB_NAME || 'mytv';
+const dbUser = process.env.DB_USER || 'neunygph';
+const dbPass = process.env.DB_PASS || 'Jannguye11!';
 const dbCred =
 	dbUser.length > 0 || dbPass.length > 0 ? `${dbUser}:${dbPass}@` : '';
 

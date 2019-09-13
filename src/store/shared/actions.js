@@ -392,3 +392,10 @@ const fetchDataOnCurrentPageChange = currentPage => (dispatch, getState) => {
 			break;
 	}
 };
+
+export const playVideo = video => (dispatch, getState) => {
+	console.log('playclicked');
+	if (video) {
+		console.log('playing selected one');
+	}
+};

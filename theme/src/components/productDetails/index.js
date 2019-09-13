@@ -6,7 +6,8 @@ import Disqus from '../comments/disqus';
 import ViewedProducts from '../products/viewed';
 import Breadcrumbs from './breadcrumbs';
 import DiscountCountdown from './discountCountdown';
-import AddToCartButton from './addToCartButton';
+//import AddToCartButton from './addToCartButton';
+import PlayButton from './playButton';
 import Attributes from './attributes';
 import Gallery from './gallery';
 import Options from './options';
@@ -14,6 +15,8 @@ import Price from './price';
 import Quantity from './quantity';
 import RelatedProducts from './relatedProducts';
 import Tags from './tags';
+import PlayerModal from './player';
+import EpisodeDropdown from './episodeDropdown';
 
 const Description = ({ description }) => (
 	<div
@@ -29,7 +32,11 @@ export default class ProductDetails extends React.Component {
 			selectedOptions: {},
 			selectedVariant: null,
 			isAllOptionsSelected: false,
-			quantity: 1
+			quantity: 1,
+			selectedEpisode: null,
+			isPlaying: false,
+			readyToPlay: false,
+			showModal: false
 		};
 
 		this.onOptionChange = this.onOptionChange.bind(this);
@@ -38,6 +45,7 @@ export default class ProductDetails extends React.Component {
 		);
 		this.addToCart = this.addToCart.bind(this);
 		this.checkSelectedOptions = this.checkSelectedOptions.bind(this);
+		this.playSelectedVideo = this.playSelectedVideo.bind(this);
 	}
 
 	onOptionChange(optionId, valueId) {
@@ -91,6 +99,25 @@ export default class ProductDetails extends React.Component {
 		addCartItem(item);
 	}
 
+	playSelectedVideo(selection) {
+		const { product, playVideo } = this.props;
+		const { selectedEpisode, isPlaying } = this.state;
+		let video = {
+			name: product.name,
+			totalEpisode: product.episode,
+			selectedEpisode: selection
+		};
+		if (selectedEpisode) {
+			video.selectedEpisode = selectedEpisode;
+		}
+		if (isPlaying) {
+			console.log('playing video');
+		}
+		//	this.setState({ selectedOptions: selectedOptions });
+		this.setState({ showModal: true });
+		playVideo(video);
+	}
+
 	checkSelectedOptions() {
 		const { selectedOptions } = this.state;
 		const { product } = this.props;
@@ -101,6 +128,7 @@ export default class ProductDetails extends React.Component {
 	}
 
 	render() {
+		//let showModal = false;
 		const { product, settings, categories } = this.props;
 		const { selectedVariant, isAllOptionsSelected } = this.state;
 		const maxQuantity =
@@ -144,18 +172,33 @@ export default class ProductDetails extends React.Component {
 											options={product.options}
 											onChange={this.onOptionChange}
 										/>
-										<Quantity
+										{/* <Quantity
 											maxQuantity={maxQuantity}
 											onChange={this.setQuantity}
-										/>
-										<div className="button-addtocart">
+										/> */}
+										{/* <div className="button-addtocart">
 											<AddToCartButton
 												product={product}
 												variant={selectedVariant}
 												addCartItem={this.addToCart}
 												isAllOptionsSelected={isAllOptionsSelected}
 											/>
+										</div> */}
+										<EpisodeDropdown
+											episodeNum={product.episode}
+											playVideo={this.playSelectedVideo}
+										/>
+										<div className="button-addtocart">
+											<PlayButton
+												product={product}
+												playVideo={this.playSelectedVideo}
+											/>
 										</div>
+										<div id="player-modal" />
+										<PlayerModal
+											product={product}
+											showModal={this.state.showModal}
+										/>
 									</div>
 								</div>
 							</div>

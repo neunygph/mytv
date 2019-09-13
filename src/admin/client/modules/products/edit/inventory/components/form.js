@@ -137,6 +137,17 @@ const ProductInventoryForm = ({
 									/>
 								</div>
 							</div>
+							<div className="blue-title">Episode</div>
+							<div className="row">
+								<div className="col-xs-6">
+									<Field
+										name="episode"
+										component={TextField}
+										floatingLabelText=""
+										fullWidth={true}
+									/>
+								</div>
+							</div>
 						</div>
 
 						<div className="col-xs-5 col-xs-offset-2">

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import { themeSettings, text } from '../../lib/settings';
 import Cart from './cart';
-import CartIndicator from './cartIndicator';
+//import CartIndicator from './cartIndicator';
 import SearchBox from './searchBox';
 import HeadMenu from './headMenu';
 
@@ -166,11 +166,11 @@ export default class Header extends React.Component {
 									}
 								/>
 
-								<CartIndicator
+								{/* <CartIndicator
 									cart={cart}
 									onClick={this.cartToggle}
 									cartIsActive={this.state.cartIsActive}
-								/>
+								/> */}
 								<div
 									className={this.state.cartIsActive ? 'mini-cart-open' : ''}
 								>

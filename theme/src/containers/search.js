@@ -8,7 +8,8 @@ const SearchContainer = props => {
 	const {
 		addCartItem,
 		loadMoreProducts,
-		state: { products, settings, productFilter, productsHasMore }
+		state: { products, settings, productFilter, productsHasMore },
+		playVideo
 	} = props;
 	const searchNotEmpty = productFilter.search && productFilter.search !== '';
 	const searchDescription = searchNotEmpty
@@ -35,6 +36,7 @@ const SearchContainer = props => {
 					<ProductList
 						products={products}
 						addCartItem={addCartItem}
+						playVideo={playVideo}
 						settings={settings}
 						loadMoreProducts={loadMoreProducts}
 						hasMore={productsHasMore}

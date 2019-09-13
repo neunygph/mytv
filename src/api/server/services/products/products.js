@@ -346,6 +346,7 @@ class ProductsService {
 			cost_price: costPrice,
 			regular_price: regularPrice,
 			sale_price: salePrice,
+			episode: 1,
 			date_sale_from: 1,
 			date_sale_to: 1,
 			images: 1,
@@ -729,6 +730,7 @@ class ProductsService {
 		product.cost_price = parse.getNumberIfPositive(data.cost_price) || 0;
 		product.regular_price = parse.getNumberIfPositive(data.regular_price) || 0;
 		product.sale_price = parse.getNumberIfPositive(data.sale_price) || 0;
+		product.episode = parse.getNumberIfPositive(data.episode) || 1;
 		product.quantity_inc = parse.getNumberIfPositive(data.quantity_inc) || 1;
 		product.quantity_min = parse.getNumberIfPositive(data.quantity_min) || 1;
 		product.weight = parse.getNumberIfPositive(data.weight) || 0;
@@ -854,6 +856,10 @@ class ProductsService {
 
 		if (data.sale_price !== undefined) {
 			product.sale_price = parse.getNumberIfPositive(data.sale_price) || 0;
+		}
+
+		if (data.episode !== undefined) {
+			product.episode = parse.getNumberIfPositive(data.episode) || 1;
 		}
 
 		if (data.quantity_inc !== undefined) {
